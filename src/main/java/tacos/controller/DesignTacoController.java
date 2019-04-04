@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tacos.domain.Ingredient;
 import tacos.domain.IngredientType;
+import tacos.domain.Taco;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,9 @@ public class DesignTacoController {
                 new Ingredient("SRCR", "Sour Cream", IngredientType.SAUCE)
         );
 
-        for(IngredientType type; IngredientType.values()){
+        IngredientType  []  types = IngredientType.values();
+
+        for(IngredientType type: types) {
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients, type));
         }
